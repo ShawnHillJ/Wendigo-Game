@@ -2,32 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rootElement : MonoBehaviour
+public class Root
 {
+    private static Root r = new Root();
 
-    public root get_root
+    public Root get_root()
     {
-        get
-        {
-            return FindObjectOfType<root>(); 
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        return r;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
-public class root : MonoBehaviour
-{
-    public rootModel model;
-    public rootView view;
-    public rootController controller;
+    public static RootModel model = new RootModel();
+    public static RootView view = new RootView();
+    public static RootController controller = new RootController();
 }

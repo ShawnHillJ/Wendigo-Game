@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rootController : rootElement
+public class RootController : Root
 {
-    public playerController player;
+    //Subclasses of root controller added here so that they can be accessed by Root.controller.subclass;
+    public PlayerController player = new PlayerController();
+    public InteractableController interactable = new InteractableController();
     // Start is called before the first frame update
     void Start()
     {

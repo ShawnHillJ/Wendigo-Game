@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootController : Root
+public class RootController
 {
     //Subclasses of root controller added here so that they can be accessed by Root.controller.subclass;
     public PlayerController player = new PlayerController();

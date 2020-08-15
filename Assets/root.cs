@@ -6,7 +6,7 @@ public class Root
 {
     private static Root r = new Root();
 
-    public Root get_root()
+    public static Root get_root()
     {
         return r;
     }

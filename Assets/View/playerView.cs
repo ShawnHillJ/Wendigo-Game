@@ -6,9 +6,12 @@ public class PlayerView : MonoBehaviour
 {
     //private root r;
     // Start is called before the first frame update
+    private Plane[] planes;
+    private Camera camera;
     void Start()
     {
-        //r = get_root;
+        Root.model.entities.player = gameObject;
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,23 @@ public class PlayerView : MonoBehaviour
             }
         }
       
+    }
+
+    public bool OnScreen(GameObject target)
+    {
+        planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        
+        if (GeometryUtility.TestPlanesAABB(planes,target.GetComponent<Collider>().bounds))
+            {
+            RaycastHit hit;
+            Physics.Raycast(gameObject.transform.position, target.transform.position - gameObject.transform.position, out hit);
+            Debug.DrawRay(gameObject.transform.position, target.transform.position - gameObject.transform.position);
+
+            if (hit.collider.gameObject == target)
+            {
+                return true; }
+            }
+        return false;
     }
 
 }

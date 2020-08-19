@@ -22,6 +22,10 @@ public class PlayerView : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float mouse_x = Input.GetAxis("Mouse X");
         float mouse_y = Input.GetAxis("Mouse Y");
+        if (vertical != 0.0f || horizontal != 0.0f)
+        {
+            Root.model.wendigo.spawnF += 0.01f;
+        }
         Root.controller.player.Movement(gameObject,vertical, horizontal,mouse_x,mouse_y);
     }
 

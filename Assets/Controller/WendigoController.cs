@@ -7,14 +7,14 @@ public class WendigoController
     // Start is called before the first frame update
     private float angle = 0.0f;    //Current angle attempting to spawn at 
     private float last_spawn_attempt = Time.time;  //Last time that a new angle was attempted
-    private float distance = 4.0f;
+    private float distance = 10.0f;
     private bool first_chase_call = true;
     private float chase_start = Time.time;
     private float chase_wait_time = 1.0f;
     private float chase_stop_time = Time.time;
     public int attempt_spawn()
     {
-        if (Time.time - last_spawn_attempt > .10f)
+        if (Time.time - last_spawn_attempt > .01f)
         {
             Root.model.entities.wendigo.transform.SetPositionAndRotation(get_wendigo_spawn_position(), Root.model.entities.wendigo.transform.rotation);
             angle += 0.01745329f * Root.model.wendigo.left;
@@ -28,7 +28,7 @@ public class WendigoController
         Vector3 backward = Root.model.entities.player.transform.forward * -1;
         backward.Normalize();
         Vector3 w_pos = new Vector3(Mathf.Cos(angle) * backward.x - Mathf.Sin(angle) * backward.z, 0, Mathf.Sin(angle) * backward.x + Mathf.Cos(angle) * backward.z);
-        w_pos *= 10.0f;
+        w_pos *= distance;
         return Root.model.entities.player.transform.position + w_pos;
     }
 
@@ -55,7 +55,7 @@ public class WendigoController
                 case 2:
                     agent.speed = 5.0f;
                     chase_wait_time = 0.0f;
-                    chase_stop_time = chase_start + 15.0f;
+                    chase_stop_time = chase_start + 1.0f;
                     break;
                 
             }
@@ -65,6 +65,8 @@ public class WendigoController
             Root.model.wendigo.state = 0;
             first_chase_call = true;
             Root.model.entities.wendigo.transform.SetPositionAndRotation(new Vector3(0, -1000, 0), Root.model.entities.wendigo.transform.rotation);
+            Root.model.wendigo.spawnF = 0.0f;
+            agent.destination = Root.model.entities.wendigo.transform.position;
             return;
         }
         if (Time.time - chase_start > chase_wait_time)

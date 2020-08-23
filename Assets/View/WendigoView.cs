@@ -32,8 +32,9 @@ public class WendigoView : MonoBehaviour
                 }
                 Root.controller.wendigo.attempt_spawn();
                 break;
-            default://Wendigo is chasing the palyer
-                agent.destination = Root.model.entities.player.transform.position;
+            case 2://Wendigo is chasing the player
+               // agent.destination = Root.model.entities.player.transform.position;
+                Root.controller.wendigo.chase(Root.model.entities.player.transform.position,agent);
                 break;
         }
     }

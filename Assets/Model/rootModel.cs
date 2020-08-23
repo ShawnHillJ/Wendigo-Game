@@ -8,14 +8,5 @@ public class RootModel
     // Start is called before the first frame update
     public EntityModel entities = new EntityModel();
     public WendigoModel wendigo = new WendigoModel();
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

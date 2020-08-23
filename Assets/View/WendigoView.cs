@@ -10,6 +10,7 @@ public class WendigoView : MonoBehaviour
     {
         Root.model.entities.wendigo = gameObject;
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;  //Allows the wendigo to leave the navmesh, must be reenabled in order for path finding to work
         Root.model.entities.wendigo.transform.SetPositionAndRotation(new Vector3 (0, -1000, 0), Root.model.entities.wendigo.transform.rotation);
         Debug.Log(Root.model.entities.wendigo.transform.position);
 

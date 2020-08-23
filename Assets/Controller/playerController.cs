@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class PlayerController 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Movement(GameObject obj, float vertical, float horizontal, float mouse_x,float mouse_y)
     {
         float movement_const = 0.025f;

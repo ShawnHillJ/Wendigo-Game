@@ -9,6 +9,14 @@ public class RootView
     public WendigoView wendigo;
     public InteractableView interactable = new InteractableView();
     // Start is called before the first frame update
+    void Start()
+    {
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
 }

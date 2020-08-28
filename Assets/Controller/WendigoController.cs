@@ -38,8 +38,6 @@ public class WendigoController
     {
         if (first_chase_call)
         {
-            agent.enabled = true;
-            agent.Warp(Root.model.entities.wendigo.transform.position);
             first_chase_call = false;
             chase_start = Time.time;
             switch(Root.model.wendigo.agg_lvl)
@@ -66,9 +64,9 @@ public class WendigoController
         {
             Root.model.wendigo.state = 0;
             first_chase_call = true;
-            agent.enabled = false;
             Root.model.entities.wendigo.transform.SetPositionAndRotation(new Vector3(0, -1000, 0), Root.model.entities.wendigo.transform.rotation);
             Root.model.wendigo.spawnF = 0.0f;
+            agent.destination = Root.model.entities.wendigo.transform.position;
             return;
         }
         if (Time.time - chase_start > chase_wait_time)
